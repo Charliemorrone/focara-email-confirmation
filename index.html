@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Confirmed - Focara</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 40px;
+            color: white;
+        }
+        h1 {
+            color: #1f2937;
+            margin-bottom: 16px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        p {
+            color: #6b7280;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        .app-button {
+            background: #3b82f6;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            margin: 8px;
+            transition: background 0.2s;
+        }
+        .app-button:hover {
+            background: #2563eb;
+        }
+        .secondary-button {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+            margin: 8px;
+            transition: background 0.2s;
+        }
+        .secondary-button:hover {
+            background: #e5e7eb;
+        }
+        .instructions {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 24px;
+            text-align: left;
+        }
+        .instructions h3 {
+            margin: 0 0 8px 0;
+            color: #374151;
+            font-size: 16px;
+        }
+        .instructions ol {
+            margin: 0;
+            padding-left: 20px;
+            color: #6b7280;
+        }
+        .instructions li {
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✓</div>
+        <h1>Email Confirmed!</h1>
+        <p>Your Focara account has been successfully confirmed. You can now sign in to your account.</p>
+        
+        <a href="focara-app://auth/callback" class="app-button" id="openApp">
+            Open Focara App
+        </a>
+        
+        <div class="instructions">
+            <h3>If the app doesn't open automatically:</h3>
+            <ol>
+                <li>Make sure you have the Focara app installed</li>
+                <li>Open the Focara app manually</li>
+                <li>Sign in with your email and password</li>
+            </ol>
+        </div>
+        
+        <a href="https://apps.apple.com/app/focara" class="secondary-button" target="_blank">
+            Download App
+        </a>
+    </div>
+
+    <script>
+        // Try to open the app immediately
+        window.location.href = 'focara-app://auth/callback';
+        
+        // Fallback: if app doesn't open within 2 seconds, show the page
+        setTimeout(() => {
+            // The page will remain visible if the app doesn't open
+        }, 2000);
+        
+        // Handle the open app button click
+        document.getElementById('openApp').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'focara-app://auth/callback';
+        });
+    </script>
+</body>
+</html>
